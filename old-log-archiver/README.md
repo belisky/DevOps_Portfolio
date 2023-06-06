@@ -1,4 +1,5 @@
 # Old Logs Archiver...
+![archive](https://github.com/belisky/DevOps_Portfolio/assets/61013338/caa7fe32-3d04-4401-9793-a01af9fa35cb)
 
 ## Abstract.
 
@@ -6,7 +7,7 @@
 
 ---
 
-### In this project I write a functional bash script that helps you archive old log files and helps you save space on your workstation simultaneously.
+### In this project I write a functional bash script(freespace.sh) that helps you archive old log files and helps you save space on your workstation simultaneously.
 
 ---
 

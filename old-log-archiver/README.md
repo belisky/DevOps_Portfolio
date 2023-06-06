@@ -6,7 +6,7 @@
 
 ---
 
-### In this project I write a bash function the helps you archive old log files and helps you save space on your workstation simultaneously.
+### In this project I write a functional bash script that helps you archive old log files and helps you save space on your workstation simultaneously.
 
 ---
 

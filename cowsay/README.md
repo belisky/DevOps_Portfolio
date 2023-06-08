@@ -37,4 +37,10 @@ Enjoy it. ^**\_**^ ..
 
 ---
 
+# Steps to Run:
+
+- First make sure you have Docker installed locally.
+- Pull the repo
+- run init-cowsay.sh to see the magic
+
 ### One step at a time.

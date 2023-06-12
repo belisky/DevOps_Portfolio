@@ -1,0 +1,12 @@
+FROM maven:3.5 as builder
+
+COPY src /usr/src/app/src
+COPY pom.xml /usr/src/app
+
+RUN mvn -f /usr/src/app/pom.xml verify
+
+FROM java:openjdk-8u111-jre-alpine
+
+COPY --from=builder /usr/src/app/target/hello-java.jar /usr/src/app/
+
+ENTRYPOINT ["java","-jar","/usr/src/app/hello-java.jar"]

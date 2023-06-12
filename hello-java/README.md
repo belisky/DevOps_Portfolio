@@ -15,4 +15,11 @@
 
 ---
 
+### Steps to Run
+
+---
+
+- Simply run the init-hello-java.sh
+- Make sure you already have Docker installed!
+
 ### One step at a time.

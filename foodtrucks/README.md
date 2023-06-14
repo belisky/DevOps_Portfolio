@@ -56,5 +56,6 @@ After building you can start the app by running `python ./app.py`
 - clone this repo
 - cd into foodtrucks and run
 - docker compose up --build -d
+- You can then access your application on localhost/
 
 ### One Step At a time.

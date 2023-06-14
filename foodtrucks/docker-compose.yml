@@ -1,0 +1,21 @@
+services:
+  es:
+    image: elasticsearch:6.8.16
+
+
+  flask-app:
+    build: .
+    depends_on:
+      - es
+  nginx:
+    image: nginx:1.23.1
+    ports:
+      - "8080:81"
+    expose:
+      - "8080"
+    depends_on:
+      - flask-app
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./flask-app/templates:/usr/share/nginx
+      - ./flask-app/static:/usr/share/nginx/static

@@ -1,0 +1,55 @@
+services:
+  backend:
+    environment:
+      DB_DIALECT: 'MYSQL'
+      DB_URL: jdbc:mysql://db:3306/lavagna?verifyServerCertificate=false&useSSL=false&autoReconnect=true
+      DB_SPRING_PROFILE: 'dev'
+      DB_PASS: 'lavagna1'
+      DB_USER: 'lavagna'
+    volumes:
+      - maven-repo:/root/.m2
+      - lavagna-vol:/lavagna
+      - lavagna-vol:/target
+    build: . 
+    depends_on:
+      - db               
+  lavagna-frontend: 
+    image: nginx:stable-alpine   
+    ports:
+      - "80:80"  
+    depends_on:
+      - backend 
+    volumes:
+      - $PWD/proxy/web:/usr/share/nginx/html/
+      - $PWD/proxy/nginx.conf:/etc/nginx/nginx.conf
+      
+ 
+  db:
+    image: mysql:5.7
+    environment:  
+      MYSQL_ROOT_PASSWORD: 'root'     
+      MYSQL_PASSWORD: 'lavagna1'
+      MYSQL_USER: 'lavagna'
+      MYSQL_DATABASE: 'lavagna'
+      MYSQL_ROOT_USER: 'root'
+      
+    ports:
+      - 3306:3306 
+    healthcheck:
+      test: ["CMD", "mysql","-u","$MYSQL_ROOT_USER","-p","MYSQL_ROOT_PASSWORD"]
+      interval: 1m
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+volumes:
+  maven-repo:
+    external:
+      true
+  lavagna-vol:
+    external:
+      true
+
+ 
+ 
+ 
+ 

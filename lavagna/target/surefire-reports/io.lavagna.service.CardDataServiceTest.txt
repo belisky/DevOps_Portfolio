@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: io.lavagna.service.CardDataServiceTest
+-------------------------------------------------------------------------------
+Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.876 sec - in io.lavagna.service.CardDataServiceTest

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: io.lavagna.web.api.ProjectPermissionControllerTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.637 sec - in io.lavagna.web.api.ProjectPermissionControllerTest

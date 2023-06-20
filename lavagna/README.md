@@ -3,7 +3,7 @@
 In this project I deploy a 3-tier application using docker(docker-compose)
 
 - Presentation-layer(Nginx)
-- Application-layer(lavagna packaged with maven)
+- Application-layer(lavagna packaged with maven [Java Backend])
 - Database-layer(MySql)
 
 # Lavagna

@@ -1,3 +1,11 @@
+# Abstract
+---
+In this project, I Dockerise a Django application(The gutenberg book project) using the 3-tier microservices architecture.
+
+- presentation-layer(Nginx)
+- Application-layer(Django)
+- Database-layer(Postgres)
+
 Gutendex
 ========
 

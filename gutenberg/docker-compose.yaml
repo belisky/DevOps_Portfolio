@@ -1,0 +1,47 @@
+ 
+volumes:
+  gutendex_data:
+  pg_data:
+
+networks:
+  front_end:
+  back_end:
+
+services:
+  nginx:
+    image: nginx:1.23-alpine
+    restart: always
+    ports:
+    - 80:80 
+    volumes:
+    - ./conf/nginx.server.conf:/etc/nginx/conf.d/default.conf  # reverse proxy configuration
+    - ./static:/usr/share/nginx/html/gutendex/static      # static files
+    networks:
+    - front_end
+
+  gutendex:
+    build: .
+    restart: always
+    ports:
+    - 8000:8000
+    env_file:
+    - .env
+    volumes:
+    - .env:/app/gutendex/.env           # app configuration
+    - gutendex_data:/app/catalog_files  # app persistence
+    networks:
+    - front_end
+    - back_end
+
+  postgres:
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+    - pg_data:/var/lib/postgresql/data  # db persistence
+    networks:
+    - back_end
+

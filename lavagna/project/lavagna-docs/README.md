@@ -1,12 +1,5 @@
-# Abstract
-
-In this project I deploy a 3-tier application using docker(docker-compose)
-
-- Presentation-layer(Nginx)
-- Application-layer(lavagna packaged with maven [Java Backend])
-- Database-layer(MySql)
-
-# Lavagna
+Lavagna
+======
 
 [![Join the chat at https://gitter.im/digitalfondue/lavagna](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/digitalfondue/lavagna?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -17,9 +10,9 @@ In this project I deploy a 3-tier application using docker(docker-compose)
 [![Docker Status](https://img.shields.io/docker/pulls/digitalfondue/lavagna.svg)](https://registry.hub.docker.com/u/digitalfondue/lavagna/)
 [![Docker Layers](https://images.microbadger.com/badges/image/digitalfondue/lavagna.svg)](https://microbadger.com/images/digitalfondue/lavagna)
 
-# Latest stable release is 1.1.2 (2018-07-20)
+# Latest stable release is 1.1.2 (2018-07-20) #
 
-## About
+## About ##
 
 [Lavagna](http://lavagna.io) is a small and easy to use issue/project tracking software.
 
@@ -27,22 +20,23 @@ It requires Java 8 and optionally a database: MySQL, MariaDB or PostgreSQL. It c
 
 See:
 
-- [roadmap](https://github.com/digitalfondue/lavagna/blob/master/ROADMAP.md)
-- [changelog](https://github.com/digitalfondue/lavagna/blob/master/CHANGELOG.md)
-- [download](http://lavagna.io/download/)
+ - [roadmap](https://github.com/digitalfondue/lavagna/blob/master/ROADMAP.md)
+ - [changelog](https://github.com/digitalfondue/lavagna/blob/master/CHANGELOG.md)
+ - [download](http://lavagna.io/download/)
 
-## Install
+
+## Install ##
 
 Lavagna supports MySQL (at least 5.1), MariaDB (tested on 10.1), PostgreSQL (tested on 9.1) and HSQLDB (for small deploy).
 
 It's distributed in 2 forms:
 
-- simple war for deploying in your preferred web container
-- self contained war with embedded jetty web server
-
+ - simple war for deploying in your preferred web container
+ - self contained war with embedded jetty web server
+ 
 See the documentation at http://help.lavagna.io
 
-### For testing purposes
+### For testing purposes ###
 
 If you want to test it locally, you can download the self contained war and run:
 
@@ -56,7 +50,7 @@ Go to http://localhost:8080 and login with "user" (password "user").
 
 See the README in the archive and the documentation at http://help.lavagna.io if you want to customize the scripts and set lavagna in production mode.
 
-### Docker
+### Docker ###
 
 Lavagna is also available as a Docker image so you can try it on the fly:
 
@@ -64,14 +58,14 @@ Lavagna is also available as a Docker image so you can try it on the fly:
 https://registry.hub.docker.com/u/digitalfondue/lavagna/
 ```
 
-## Develop
+## Develop ##
 
-### Java and Kotlin
+### Java and Kotlin ###
 
 Lavagna runs on a Java 8 jvm.
 Some parts of Lavagna are made with Kotlin.
 
-### IDE Configuration
+### IDE Configuration ###
 
 Use UTF-8 encoding and 120 characters as line width.
 You will need a Java _and_ Kotlin aware IDE. (Currently tested with intellij and eclipse).
@@ -93,7 +87,7 @@ npm run-script lint
 
 Fix any error or warning before opening a pull request
 
-### Execute
+### Execute ###
 
 Launch the Web Server:
 
@@ -112,18 +106,16 @@ for launching Web Server with the MySQL database (use the mysql profile):
 ```
 mvn jetty:run -Pdev-mysql
 ```
-
 ```
 mvn jetty:run -Pdev-pgsql
 ```
-
 - go to http://localhost:8080
   if you have a 403 error, you must configure the application,
   go to http://localhost:8080/setup, select demo + insert user "user".
 
 - enter
-  username: user
-  password: user
+	username: user
+	password: user
 
 For debugging:
 
@@ -142,7 +134,6 @@ For running the test cases with MySQL or PostgreSQL:
 ```
 mvn test -Ddatasource.dialect=MYSQL
 ```
-
 ```
 mvn test -Ddatasource.dialect=PGSQL
 ```
@@ -160,14 +151,14 @@ When adding new file, remember to add the license header with:
 mvn com.mycila:license-maven-plugin:format
 ```
 
-### Angular perfs
+### Angular perfs ###
 
 Use the following stats for keeping an eye on the performances:
 
-- https://github.com/kentcdodds/ng-stats has a bookmarklet
-- https://github.com/mrdoob/stats.js/ has a bookrmarklet
+ - https://github.com/kentcdodds/ng-stats has a bookmarklet
+ - https://github.com/mrdoob/stats.js/ has a bookrmarklet
 
-### Documentation
+### Documentation ###
 
 The documentation is written using stampo (see https://github.com/digitalfondue/stampo).
 It currently reside in src/main/stampo .
@@ -188,12 +179,12 @@ mvn stampo:serve
 
 And go to http://localhost:45001/
 
-### Vagrant
+### Vagrant ###
 
 In order to make it easier to tests on different databases we included 3 Vagrant VMs.
 Make sure that you have installed Vagrant and VirtualBox before continuing.
 
-#### Initialization
+#### Initialization ####
 
 Fetch the submodules:
 
@@ -217,13 +208,14 @@ Once that the VM is up and running run the tests:
 mvn test -Ddatasource.dialect=PGSQL / MYSQL
 ```
 
-#### Connecting manually:
+
+#### Connecting manually: ####
 
 PGSQL: localhost:5432/lavagna as postgres / password
 
 MySQL: localhost:3306/lavagna as root
 
-## Notes about databases
+## Notes about databases ##
 
 The application uses UTF-8 at every stage and on MySQL you will need to create a database with the collation set to utf8_bin:
 
@@ -231,7 +223,8 @@ The application uses UTF-8 at every stage and on MySQL you will need to create a
 CREATE DATABASE lavagna CHARACTER SET utf8 COLLATE utf8_bin;
 ```
 
-### Code Coverage
+
+### Code Coverage ###
 
 Jacoco plugin is used.
 
@@ -241,16 +234,17 @@ mvn clean test jacoco:report
 
 -> open target/site/jacoco/index.html with your browser
 
-## About Database migration
+
+## About Database migration ##
 
 Can be disabled using the following system property: datasource.disable.migration=true
 
-## Check for updated dependencies
+
+## Check for updated dependencies ##
 
 ```
 mvn versions:display-dependency-updates
 ```
-
 ```
 mvn versions:display-plugin-updates
 ```
